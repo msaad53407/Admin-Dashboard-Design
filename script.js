@@ -12,6 +12,18 @@ const colorScheme = localStorage.getItem('colorScheme')
 document.body.classList.toggle(colorScheme)
 toggler.checked = (document.body.classList.contains('dark')) ? true : false
 
+const windowSizing = () => {
+    if (window.innerWidth < 800) {
+        sideBar.classList.add('close');
+    } else {
+        sideBar.classList.remove('close');
+    }
+    if (window.innerWidth > 576) {
+        searchBtnIcon.classList.replace('bx-x', 'bx-search');
+        searchForm.classList.remove('show');
+    }
+}
+
 if (window.innerWidth < 600) {
     tableBodyRows.forEach(row => {
         if (row.firstElementChild.tagName != 'DIV') {
@@ -19,6 +31,8 @@ if (window.innerWidth < 600) {
         }
     })
 }
+
+windowSizing();
 
 sideLinks.forEach(item => {
     const li = item.parentElement;
@@ -46,17 +60,9 @@ searchBtn.addEventListener('click', function (e) {
     }
 });
 
-window.addEventListener('resize', () => {
-    if (window.innerWidth < 800) {
-        sideBar.classList.add('close');
-    } else {
-        sideBar.classList.remove('close');
-    }
-    if (window.innerWidth > 576) {
-        searchBtnIcon.classList.replace('bx-x', 'bx-search');
-        searchForm.classList.remove('show');
-    }
-});
+
+
+window.addEventListener('resize', () => windowSizing());
 
 toggler.addEventListener('change', function () {
     if (this.checked) {
