@@ -718,15 +718,22 @@ body {
     display: none;
   }
 
-  .content main .insights {
-    grid-template-columns: 1fr;
-  }
-
   .content main .bottom-data .header {
     min-width: 340px;
   }
 
   .content main .bottom-data .reminders .task-list {
     min-width: 340px;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .content main .bottom-data .orders table tbody tr th,
+  .content main .bottom-data .orders table tbody tr td {
+    margin-left: 30px;
+  }
+  .content main .bottom-data .orders .header .left h3,
+  .content main .bottom-data .reminders .header .left h3 {
+    font-size: 23px;
   }
 }
