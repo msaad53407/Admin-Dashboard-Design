@@ -1,0 +1,736 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+:root {
+  --light: #f6f6f9;
+  --primary: #1976d2;
+  --light-primary: #cfe8ff;
+  --grey: #eee;
+  --dark-grey: #aaaaaa;
+  --dark: #363949;
+  --danger: #d32f2f;
+  --light-danger: #fecdd3;
+  --warning: #fbc02d;
+  --light-warning: #fff2c6;
+  --success: #388e3c;
+  --light-success: #bbf7d0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.bx {
+  font-size: 1.7rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body.dark {
+  --light: #181a1e;
+  --grey: #25252c;
+  --dark: #fbfbfb;
+}
+
+body {
+  background-color: var(--grey);
+  overflow-x: hidden;
+}
+
+/* Sidebar Styles */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  scrollbar-width: none;
+  width: 230px;
+  height: 100%;
+  background-color: var(--light);
+  overflow-x: hidden;
+  transition: all 0.3s ease;
+  z-index: 2000;
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar.close {
+  width: 60px;
+}
+
+.sidebar .logo {
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  height: 56px;
+  padding-bottom: 20px;
+  box-sizing: content-box;
+  color: var(--primary);
+  z-index: 500;
+}
+
+.sidebar .logo .logo-name span {
+  color: var(--dark);
+}
+
+.sidebar .logo .bx {
+  min-width: 60px;
+  display: flex;
+  justify-content: center;
+  font-size: 2.2rem;
+}
+
+.sidebar .sidebar-menu {
+  width: 100%;
+  margin-top: 48px;
+}
+
+.sidebar .side-menu li {
+  height: 48px;
+  background: transparent;
+  margin-left: 6px;
+  /* border-radius: 48px 0 0 48px; */
+  padding: 4px;
+}
+
+.sidebar .side-menu li.active {
+  background-color: var(--light);
+  border: 5px solid var(--grey);
+  border-radius: 48px;
+  position: relative;
+}
+
+.sidebar .side-menu li.active::before {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  top: -40px;
+  right: -5px;
+  box-shadow: 20px 20px 0 var(--grey);
+  z-index: -1;
+}
+
+.sidebar .side-menu li.active::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  bottom: -40px;
+  right: -5px;
+  box-shadow: 20px -20px 0 var(--grey);
+  z-index: -1;
+}
+
+.sidebar .side-menu li a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 48px;
+  font-size: 16px;
+  color: var(--dark);
+  white-space: nowrap;
+  overflow-x: hidden;
+  transition: all 0.3s ease;
+}
+
+.sidebar .side-menu li.active a {
+  color: var(--success);
+}
+
+.sidebar.close .side-menu li a {
+  width: calc(48px - (4px * 2));
+  transition: all 0.3s ease;
+}
+
+.sidebar .side-menu li a .bx {
+  min-width: calc(60px - ((4px + 6px) * 2));
+  display: flex;
+  font-size: 1.6rem;
+  justify-content: center;
+}
+
+.sidebar .side-menu li a.logout {
+  margin-top: 40px;
+  color: var(--danger);
+}
+
+.content {
+  position: relative;
+  width: calc(100% - 230px);
+  left: 230px;
+  transition: all 0.3s ease;
+}
+
+.sidebar.close ~ .content {
+  width: calc(100% - 60px);
+  left: 60px;
+}
+
+/* Navbar Styles */
+
+.content nav {
+  display: flex;
+  height: 56px;
+  background-color: var(--light);
+  padding: 0 24px 0 0;
+  align-items: center;
+  gap: 24px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.content nav::before {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  bottom: -40px;
+  left: 0;
+  border-radius: 50%;
+  box-shadow: -20px -20px 0 var(--light);
+}
+
+.content nav a {
+  color: var(--dark);
+}
+
+.content nav .bx.bx-menu {
+  color: var(--dark);
+  cursor: pointer;
+}
+
+.content nav form {
+  max-width: 400px;
+  width: 100%;
+  margin-right: auto;
+}
+
+.content nav form .form-input {
+  display: flex;
+  height: 36px;
+  align-items: center;
+}
+
+.content nav form .form-input input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background-color: var(--grey);
+  color: var(--dark);
+  width: 100%;
+  padding: 0px 16px;
+  height: 100%;
+  border-radius: 36px 0 0 36px;
+}
+
+.content nav form .form-input .search-btn {
+  border: none;
+  outline: none;
+  height: 100%;
+  width: 60px;
+  font-size: 18px;
+  background-color: var(--primary);
+  color: var(--light);
+  border-radius: 0 36px 36px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content nav .notif {
+  font-size: 20px;
+  position: relative;
+}
+
+.content nav .notif .count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 20px;
+  height: 20px;
+  color: var(--light);
+  border: 2px solid var(--light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  background-color: var(--danger);
+  border-radius: 50%;
+}
+
+.content nav .profile img {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.content nav .theme-toggler {
+  display: block;
+  min-width: 50px;
+  height: 26px;
+  background-color: var(--grey);
+  cursor: pointer;
+  position: relative;
+  border-radius: 35px;
+}
+.content nav .theme-toggler::before {
+  content: "";
+  position: absolute;
+  background-color: var(--primary);
+  width: 21px;
+  top: 2px;
+  left: 2px;
+  bottom: 2px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.content nav #theme-toggler:checked + .theme-toggler::before {
+  left: calc(100% - 19px);
+}
+
+/* Header Styles */
+
+.content main {
+  width: 100%;
+  max-height: calc(100vh - 56px);
+  padding: 36px 24px;
+}
+
+.content main header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.content main header .left h1 {
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+
+.content main header .left .breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.content main .header .left .breadcrumb li {
+  color: var(--dark);
+}
+
+.breadcrumb li a {
+  color: var(--dark-grey);
+  pointer-events: none;
+}
+
+.breadcrumb li a.active {
+  color: var(--primary);
+  pointer-events: none;
+}
+
+.content main header .report {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--primary);
+  padding: 0 16px;
+  border-radius: 48px;
+  color: var(--grey);
+  gap: 10px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Insights Styles */
+.content main .insights {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 15px;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 18px;
+}
+
+.content main .insights li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  width: 24%;
+  min-width: 260px;
+  padding: 20px 30px;
+  background-color: var(--light);
+  border-radius: 18px;
+  height: 100%;
+}
+
+.content main .insights li .bx {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  font-size: 36px;
+  border-radius: 12px;
+}
+
+.content main .insights li h3 {
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--dark);
+}
+
+.content main .insights li p {
+  font-size: 18px;
+  color: var(--dark);
+}
+
+.content main .insights li .bx-calendar-check {
+  background-color: var(--light-primary);
+  color: var(--primary);
+}
+.content main .insights li .bx-show-alt {
+  background-color: var(--light-warning);
+  color: var(--warning);
+}
+.content main .insights li .bx-line-chart {
+  background-color: var(--light-success);
+  color: var(--success);
+}
+.content main .insights li .bx-dollar-circle {
+  background-color: var(--light-danger);
+  color: var(--danger);
+}
+
+/* Orders Styles */
+
+.content main .bottom-data {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.content main .bottom-data .orders {
+  width: 60%;
+  background-color: var(--light);
+  border-radius: 22px;
+  padding: 27px 25px;
+}
+
+.content main .bottom-data .reminders {
+  width: 39%;
+  background-color: var(--light);
+  border-radius: 22px;
+  padding: 27px 25px;
+}
+
+.content main .bottom-data .orders .header {
+  display: flex;
+  justify-content: space-between;
+  color: var(--dark);
+  margin-bottom: 20px;
+}
+
+.content main .bottom-data .orders .header .left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+  font-size: 22px;
+}
+
+.content main .bottom-data .orders .header .left h3 {
+  font-weight: 600;
+}
+
+.content main .bottom-data .orders .header .right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.content main .bottom-data .orders table {
+  width: 100%;
+}
+
+.content main .bottom-data .orders table tr {
+  display: flex;
+  margin-bottom: 40px;
+  gap: 20%;
+  align-items: center;
+  color: var(--dark);
+}
+
+.content main .bottom-data .orders table tr .row-data {
+  display: none;
+}
+
+.content main .bottom-data .orders table thead tr th:first-child {
+  flex: 0.4;
+}
+
+.content main .bottom-data .orders table tr .order-date {
+  font-size: 20px;
+}
+
+.content main .bottom-data .orders table tbody tr th {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.content main .bottom-data .orders table tbody tr th p {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.content main .bottom-data .orders table tr img {
+  height: 36px;
+  width: 36px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.content main .bottom-data .orders table tr .status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--light);
+  padding: 10px 25px;
+  border-radius: 26px;
+  height: 100%;
+  width: fit-content;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.content main .bottom-data .orders table tr .status-completed {
+  background-color: var(--success);
+}
+
+.content main .bottom-data .orders table tr .status-pending {
+  background-color: var(--warning);
+}
+
+.content main .bottom-data .orders table tr .status-processing {
+  background-color: var(--primary);
+}
+
+/* Reminders Styles */
+.content main .bottom-data .reminders {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+.content main .bottom-data .reminders .header {
+  display: flex;
+  justify-content: space-between;
+  color: var(--dark);
+}
+
+.content main .bottom-data .reminders .header .left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+  font-size: 22px;
+}
+
+.content main .bottom-data .reminders .header .left h3 {
+  font-weight: 600;
+}
+
+.content main .bottom-data .reminders .header .right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.content main .bottom-data .reminders .tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: var(--dark);
+}
+
+.content main .bottom-data .reminders .tasks-list li {
+  display: flex;
+  align-items: center;
+  background-color: var(--grey);
+  justify-content: space-between;
+  padding: 18px 10px;
+  border-radius: 12px;
+}
+
+.content main .bottom-data .reminders .tasks-list li .task-title {
+  display: flex;
+  gap: 7px;
+}
+
+.content main .bottom-data .reminders .tasks-list .completed {
+  border-left: 12px solid var(--success);
+}
+
+.content main .bottom-data .reminders .tasks-list .not-completed {
+  border-left: 12px solid var(--danger);
+}
+
+@media screen and (max-width: 1200px) {
+  .content main .bottom-data {
+    flex-direction: column;
+    align-items: center;
+  }
+  .content main .bottom-data .reminders,
+  .content main .bottom-data .orders {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .content main .insights {
+    flex-direction: column;
+  }
+  .content main .insights li {
+    width: 80%;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .content {
+    width: calc(100% - 60px);
+    left: 200px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .content main .bottom-data .orders .header,
+  .content main .bottom-data .reminders .header {
+    width: 100%;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  .content main .bottom-data .orders table {
+    display: flex;
+    height: 100%;
+  }
+  .content main .bottom-data .orders table tr {
+    flex-direction: column;
+    position: relative;
+  }
+
+  .content main .bottom-data .orders table tr .row-data {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    gap: 35px;
+    left: -50px;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .content main .bottom-data .orders table thead {
+    display: none;
+  }
+  .content main .bottom-data .orders table tbody {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 45px;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .content main .bottom-data .orders table tbody tr th,
+  .content main .bottom-data .orders table tbody tr td {
+    margin-left: 60px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .content nav form .form-input input {
+    display: none;
+  }
+
+  .content nav form .form-input button {
+    width: auto;
+    height: auto;
+    background: transparent;
+    color: var(--dark);
+    border-radius: none;
+  }
+
+  .content nav form.show .form-input input {
+    display: block;
+    width: 100%;
+  }
+
+  .content nav form.show .form-input button {
+    width: 36px;
+    height: 100%;
+    color: var(--light);
+    background: var(--danger);
+    border-radius: 0 36px 36px 0;
+  }
+
+  .content nav form.show ~ .notif,
+  .content nav form.show ~ .profile {
+    display: none;
+  }
+
+  .content main .insights {
+    grid-template-columns: 1fr;
+  }
+
+  .content main .bottom-data .header {
+    min-width: 340px;
+  }
+
+  .content main .bottom-data .orders table {
+    min-width: 340px;
+  }
+
+  .content main .bottom-data .reminders .task-list {
+    min-width: 340px;
+  }
+}
